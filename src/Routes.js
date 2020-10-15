@@ -5,6 +5,7 @@ import Profile from './layout/Profile';
 import Login from './layout/Login';
 import SignUp from './layout/Signup';
 import Edit from './layout/Edit';
+import OneClientOutgoing from './layout/OneClientOutGoing';
 import { AuthProvider } from './auth/AuthContext';
 import { PrivateRoute } from './auth/PrivateRoute';
 
@@ -17,6 +18,7 @@ function Routes() {
         <PrivateRoute path="/edit" component={Edit} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/sign-up" component={SignUp} />
+        <Route exact path="/v1/get-one-client-outgoing" component={OneClientOutgoing} />
       </Router>
     </AuthProvider>
   );

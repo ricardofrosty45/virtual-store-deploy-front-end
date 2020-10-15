@@ -16,10 +16,14 @@ import {
 } from '@material-ui/core';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import HomeIcon from '@material-ui/icons/Home';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import MenuIcon from '@material-ui/icons/Menu';
+import PaymentIcon from '@material-ui/icons/Payment';
+import LocalAtmIcon from '@material-ui/icons/LocalAtm';
+import StoreIcon from '@material-ui/icons/Store';
 import { Link } from 'react-router-dom';
 import { authConfig } from '../../auth/config';
 
@@ -150,7 +154,10 @@ export const MenuBar = (props) => {
         <Divider />
         <List>
           {[
-            { title: 'Home', icon: <HomeIcon />, link: '/' },
+            { title: 'Home', icon: <LocalAtmIcon />, link: '/' },
+            { title: 'One-Client-Outgoing', icon: <AttachMoneyIcon />, link: '/v1/get-one-client-outgoing' },
+            { title: 'Home', icon: <PaymentIcon />, link: '/v1/buy-product' },
+            { title: 'Home', icon: <StoreIcon />, link: '/v1/create-product' },
             { title: 'Profile', icon: <AccountCircleIcon />, link: '/profile' },
           ].map((item, index) => (
             <Link
