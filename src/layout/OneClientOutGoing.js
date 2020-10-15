@@ -15,6 +15,9 @@ import {
 } from '@material-ui/core';
 import { Content } from '../components/Content';
 
+
+
+
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -30,6 +33,8 @@ const useStyles = makeStyles({
 
 
 const OneClientOutGoing = () => {
+
+  
   const classes = useStyles();
   const params = new URLSearchParams([['id', '5f7d69f5fa598d59ac2e8893']]);
   const [clientSpendings, setClientSpendings] = useState([]);
