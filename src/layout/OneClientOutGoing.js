@@ -31,13 +31,14 @@ const useStyles = makeStyles({
 
 const OneClientOutGoing = () => {
   const classes = useStyles();
-
+  const params = new URLSearchParams([['id', '5f7d69f5fa598d59ac2e8893']]);
   const [clientSpendings, setClientSpendings] = useState([]);
-  const data = {clientId: '5f7d69aafa598d59ac2e8890'};
   const fetchClientSpendings = () =>{
-    axios.get("https://virtual-store-project-back-end.herokuapp.com/v1/spendings/client",data).then(res =>{
+    axios.get("https://virtual-store-project-back-end.herokuapp.com/v1/spendings/search/one", { params }).then(res =>{
         console.log(res);
-        setClientSpendings(res.data.allClientSpendings);
+        console.log(res.data);
+        console.log(res.data.outgoing);
+        setClientSpendings(res.data.outgoing);
     });
   };
   useEffect(() => {
@@ -53,7 +54,7 @@ const OneClientOutGoing = () => {
         <Typography variant="h5" className={classes.typography}>
           Client Outgoing
         </Typography>
-        <Button variant="contained" color="secondary">
+        <Button variant="contained" color="secondary" onClick={()=> this.OneClientOutGoing}>
                  Search For A Client Outgoing - Inform Client Id
            </Button>
            <form className={classes.root} noValidate autoComplete="off">
@@ -73,19 +74,17 @@ const OneClientOutGoing = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {clientSpendings.map((clientSpendingsRow) => (
-            <TableRow key={clientSpendingsRow.name}>
+            <TableRow key={clientSpendings.name}>
               <TableCell component="th" scope="row">
-                {clientSpendingsRow.id}
+                {clientSpendings.id}
               </TableCell>
-              <TableCell align="right">{clientSpendingsRow.clientId}</TableCell>
-              <TableCell align="right">{clientSpendingsRow.clientName}</TableCell>
-              <TableCell align="right">{clientSpendingsRow.description}</TableCell>
-              <TableCell align="right">{clientSpendingsRow.todaysDateSpendings}</TableCell>
-              <TableCell align="right">{clientSpendingsRow.tags}</TableCell>
-              <TableCell align="right">R$ {clientSpendingsRow.clientSpendings}</TableCell>
+              <TableCell align="right">{clientSpendings.clientId}</TableCell>
+              <TableCell align="right">{clientSpendings.clientName}</TableCell>
+              <TableCell align="right">{clientSpendings.description}</TableCell>
+              <TableCell align="right">{clientSpendings.todaysDateSpendings}</TableCell>
+              <TableCell align="right">{clientSpendings.tags}</TableCell>
+              <TableCell align="right">R$ {clientSpendings.clientSpendings}</TableCell>
             </TableRow>
-          ))}
         </TableBody>
       </Table>
     </TableContainer>
