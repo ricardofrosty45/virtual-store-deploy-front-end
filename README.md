@@ -1,5 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Link for tests: https://5f891f6a4c77a9bbfc41dfdf--virtual-store-project.netlify.app/
 ## Available Scripts
 
 In the project directory, you can run:
