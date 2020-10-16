@@ -14,12 +14,12 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Profile = () => {
+const BuyProduct = () => {
 
-  const [result, setResult] = useState([]);
+    const [result, setResult] = useState([]);
    
    const fetchClientSpendings = () =>{
-    axios.post("https://virtual-store-project-back-end.herokuapp.com/v1/user",{ name: name, email: email, documentNumber: documentNumber,birthDate: birthDate}).then(res =>{
+    axios.post("https://virtual-store-project-back-end.herokuapp.com/v1/product/buy",{ idProduct: idProduct, clientId: clientId}).then(res =>{
          console.log(res);
          console.log(res.data);
          console.log(res.data.outgoing);
@@ -30,35 +30,24 @@ const Profile = () => {
    };
 
 
-
-
-  const [name, setName] = useState('Your Name');
-  const [email, setEmail] = useState('Your Email');
-  const [documentNumber, setdocumentNumber] = useState('CPF');
-  const [birthDate, setBirthDate] = useState('Your Birth Date');
+  const [idProduct, setIdProduct] = useState('');
+  const [clientId, setClientId] = useState('');
   const classes = useStyles();
 
   const onChangeHandler = (event, hook) => {
     hook(event.target.value);
   };
   const inputFields = [
-    { title: 'E-mail', value: email ,
-      onChange: (event) => onChangeHandler(event, setEmail),
+    {
+      title: 'Id Product',
+      value: idProduct,
+     
+      onChange: (event) => onChangeHandler(event, setIdProduct),
     },
     {
-      title: 'Name',
-      value: name,
-      onChange: (event) => onChangeHandler(event, setName),
-    },
-    {
-      title: 'Document number',
-      value: documentNumber,
-      onChange: (event) => onChangeHandler(event, setdocumentNumber),
-    },
-    {
-      title: 'Birth date',
-      value: birthDate,
-      onChange: (event) => onChangeHandler(event, setBirthDate),
+      title: 'Client Id',
+      value: clientId,
+      onChange: (event) => onChangeHandler(event, setClientId),
     },
   ];
 
@@ -66,7 +55,7 @@ const Profile = () => {
     <React.Fragment>
       <Content>
         <div className={classes.item}>
-          <Typography variant="h5">Create User </Typography>
+          <Typography variant="h5">Buy Product </Typography>
           {inputFields.map((input, index) => (
             <TextInput
               key={`${index}_${input.title}`}
@@ -83,7 +72,7 @@ const Profile = () => {
             size="small"
             onClick={fetchClientSpendings}
           >
-            Save changes
+            Buy New Product
           </Button>
         </div>
       </Content>
@@ -91,4 +80,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default BuyProduct;

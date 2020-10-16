@@ -40,11 +40,11 @@ const OneClientOutGoing = () => {
   
   
   const fetchClientSpendings = () =>{
-   axios.get(`https://virtual-store-project-back-end.herokuapp.com/v1/spendings/search/one?id=${searchValue}`).then(res =>{
+   axios.get(`https://virtual-store-project-back-end.herokuapp.com/v1/user?id=${searchValue}`).then(res =>{
         console.log(res);
         console.log(res.data);
         console.log(res.data.outgoing);
-        setResult(res.data.outgoing);
+        setResult(res.data);
     }).catch((error) => { console.log(error) })
 
     console.log(searchValue,"123");
@@ -65,10 +65,10 @@ const OneClientOutGoing = () => {
       <CssBaseline />
       <Content title="Home">
         <Typography variant="h5" className={classes.typography}>
-          Client Outgoing
+          Search For A Client
         </Typography>
         <Button className='button' variant="contained" color="secondary" onClick={fetchClientSpendings}>
-                 Search For A Client Outgoing - Inform OutGoing Id
+                 Search For A Client - Inform His Id
            </Button>
            <form className={classes.root} noValidate autoComplete="off">
            <input value={searchValue} onChange={onChangeHandler}/>
@@ -77,26 +77,22 @@ const OneClientOutGoing = () => {
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Outgoing Id</TableCell>
-            <TableCell align="right">Client Id</TableCell>
+            <TableCell>Client Id</TableCell>
+            <TableCell align="right">Client's Name</TableCell>
             <TableCell align="right">Client Name</TableCell>
-            <TableCell align="right">Description</TableCell>
-            <TableCell align="right">Today's Date Spendings</TableCell>
-            <TableCell align="right">tags</TableCell>
-            <TableCell align="right">clientSpendings</TableCell>
+            <TableCell align="right">Document Number (CPF)</TableCell>
+            <TableCell align="right">Client Birth Date</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-            <TableRow key={result.name}>
+            <TableRow>
               <TableCell component="th" scope="row">
                 {result.id}
               </TableCell>
-              <TableCell align="right">{result.clientId}</TableCell>
-              <TableCell align="right">{result.clientName}</TableCell>
-              <TableCell align="right">{result.description}</TableCell>
-              <TableCell align="right">{result.todaysDateSpendings}</TableCell>
-              <TableCell align="right">{result.tags}</TableCell>
-              <TableCell align="right">R$ {result.clientSpendings}</TableCell>
+              <TableCell align="right">{result.name}</TableCell>
+              <TableCell align="right">{result.email}</TableCell>
+              <TableCell align="right">{result.documentNumber}</TableCell>
+              <TableCell align="right">{result.birthDate}</TableCell>
             </TableRow>
         </TableBody>
       </Table>

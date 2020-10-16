@@ -159,6 +159,7 @@ export const MenuBar = (props) => {
             { title: 'Home', icon: <PaymentIcon />, link: '/v1/buy-product' },
             { title: 'Home', icon: <StoreIcon />, link: '/v1/create-product' },
             { title: 'Profile', icon: <AccountCircleIcon />, link: '/profile' },
+            { title: 'Profile', icon: <AccountCircleIcon />, link: '/v1/get-one-user' },
           ].map((item, index) => (
             <Link
               to={item.link}
